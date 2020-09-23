@@ -12,6 +12,7 @@
     using Application.VoyagePlan.Queries.GetCities;
     using Application.VoyagePlan.Queries.GetCityById;
     using Application.VoyagePlan.Queries.GetVoyagePlanByCityFrom;
+    using Application.VoyagePlan.Queries.GetVoyagePlanByFromTo;
     using Microsoft.AspNetCore.Mvc;
 
     public class VoyagePlanController : BaseApiController
@@ -50,6 +51,12 @@
         public async Task<ActionResult<ServiceResult<VoyagePlanDto>>> Publish(PublishVoyagePlanCommand command)
         {
             return Ok(await Mediator.Send(command));
+        }
+
+        [HttpGet("searchfromto")]
+        public async Task<ActionResult<ServiceResult<VoyagePlanDto>>> GetVoyagePlanByFromTo([FromQuery] GetVoyagePlanByFromToQuery query)
+        {
+            return Ok(await Mediator.Send(query));
         }
 
         [HttpGet("searchfrom/{param}")]

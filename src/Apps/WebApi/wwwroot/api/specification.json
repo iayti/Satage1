@@ -355,6 +355,46 @@
         }
       }
     },
+    "/api/VoyagePlan/searchfromto": {
+      "get": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_GetVoyagePlanByFromTo",
+        "parameters": [
+          {
+            "name": "CityFromId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "CityToId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/VoyagePlan/searchfrom/{param}": {
       "get": {
         "tags": [
