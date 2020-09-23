@@ -30,7 +30,7 @@
         public async Task<ServiceResult<VoyagePlanDto>> Handle(GetVoyagePlanByFromToQuery request, CancellationToken cancellationToken)
         {
             VoyagePlanDto plan = await _context.VoyagePlans
-                .Where(x => x.CityFromId == request.CityFromId && x.CityToId == request.CityToId)
+                .Where(x => x.CityFromId == request.CityFromId && x.CityToId == request.CityToId && x.Publish)
                 .ProjectToType<VoyagePlanDto>(_mapper.Config)
                 .FirstOrDefaultAsync(cancellationToken);
 

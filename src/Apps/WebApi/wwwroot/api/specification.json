@@ -490,6 +490,38 @@
           }
         }
       }
+    },
+    "/api/VoyagePlan/stop": {
+      "post": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_AddStopToVoyagePlan",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddStopToVoyagePlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfEnrolleeDto"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -755,6 +787,39 @@
                 "$ref": "#/components/schemas/CityDto"
               }
             ]
+          },
+          "stops": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/StopDto"
+            }
+          }
+        }
+      },
+      "StopDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "voyagePlanId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "voyagePlan": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VoyagePlanDto"
+              }
+            ]
           }
         }
       },
@@ -903,6 +968,20 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
+          "voyagePlanId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "AddStopToVoyagePlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cityId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "voyagePlanId": {
             "type": "integer",
             "format": "int32"

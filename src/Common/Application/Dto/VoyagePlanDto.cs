@@ -1,6 +1,7 @@
 ﻿namespace Application.Dto
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using Domain.Entities;
     using Mapster;
@@ -11,6 +12,7 @@
         {
             CityFrom = new CityDto();
             CityTo = new CityDto();
+            Stops = new List<StopDto>();
         }
 
         public int Id { get; set; }
@@ -34,6 +36,8 @@
 
         public CityDto CityFrom { get; set; }
         public CityDto CityTo { get; set; }
+
+        public IList<StopDto> Stops { get; set; }
 
         public void Register(TypeAdapterConfig config)
         {

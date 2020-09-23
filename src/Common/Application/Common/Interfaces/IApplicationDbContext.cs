@@ -15,6 +15,8 @@
 
         DbSet<Enrollee> Enrollees { get; set; }
 
+        DbSet<Stop> Stops { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

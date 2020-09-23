@@ -8,6 +8,7 @@
     using Application.VoyagePlan.Commands.Delete;
     using Application.VoyagePlan.Commands.Enroll;
     using Application.VoyagePlan.Commands.Publish;
+    using Application.VoyagePlan.Commands.Stop;
     using Application.VoyagePlan.Commands.Update;
     using Application.VoyagePlan.Queries.GetCities;
     using Application.VoyagePlan.Queries.GetCityById;
@@ -73,6 +74,12 @@
 
         [HttpPost("enroll")]
         public async Task<ActionResult<ServiceResult<EnrolleeDto>>> Enroll(EnrollVoyagePlanCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpPost("stop")]
+        public async Task<ActionResult<ServiceResult<EnrolleeDto>>> AddStopToVoyagePlan(AddStopToVoyagePlanCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
