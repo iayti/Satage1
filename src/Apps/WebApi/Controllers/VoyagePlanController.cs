@@ -6,10 +6,12 @@
     using Application.Dto;
     using Application.VoyagePlan.Commands.Create;
     using Application.VoyagePlan.Commands.Delete;
+    using Application.VoyagePlan.Commands.Enroll;
     using Application.VoyagePlan.Commands.Publish;
     using Application.VoyagePlan.Commands.Update;
     using Application.VoyagePlan.Queries.GetCities;
     using Application.VoyagePlan.Queries.GetCityById;
+    using Application.VoyagePlan.Queries.GetVoyagePlanByCityFrom;
     using Microsoft.AspNetCore.Mvc;
 
     public class VoyagePlanController : BaseApiController
@@ -46,6 +48,24 @@
 
         [HttpPost("publish")]
         public async Task<ActionResult<ServiceResult<VoyagePlanDto>>> Publish(PublishVoyagePlanCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpGet("searchfrom/{param}")]
+        public async Task<ActionResult<ServiceResult<VoyagePlanDto>>> GetVoyagePlanByCityFrom(string param)
+        {
+            return Ok(await Mediator.Send(new GetVoyagePlanByCityFromQuery { param = param }));
+        }
+
+        [HttpGet("searchto/{param}")]
+        public async Task<ActionResult<ServiceResult<VoyagePlanDto>>> GetVoyagePlanByCityTo(string param)
+        {
+            return Ok(await Mediator.Send(new GetVoyagePlanByCityToQuery { param = param }));
+        }
+
+        [HttpPost("enroll")]
+        public async Task<ActionResult<ServiceResult<EnrolleeDto>>> Enroll(EnrollVoyagePlanCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

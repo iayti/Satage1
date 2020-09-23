@@ -45,7 +45,6 @@
                 Description = request.Description,
                 NumberOfSeats = request.NumberOfSeats,
                 UserId = _currentUserService.UserId,
-                CurrentCapacity = 0,
                 Publish = false,
             };
 

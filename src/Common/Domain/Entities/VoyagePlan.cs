@@ -18,8 +18,6 @@
 
         public int NumberOfSeats { get; set; }
 
-        public int CurrentCapacity { get; set; }
-
         public bool Publish { get; set; }
 
         public string UserId { get; set; }

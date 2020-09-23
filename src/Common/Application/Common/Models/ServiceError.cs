@@ -71,6 +71,8 @@
 
         public static ServiceError SearchAtLeastOneCharacter => new ServiceError("Search parameter must have at least one character!", 898);
 
+        public static ServiceError EnrollmentClosed => new ServiceError("Registrations for this trip are closed!", 850);
+
         /// <summary>
         /// Default error for when we receive an exception
         /// </summary>

@@ -38,6 +38,8 @@
 
         public DbSet<VoyagePlan> VoyagePlans { get; set; }
 
+        public DbSet<Enrollee> Enrollees { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<BaseEntity>())

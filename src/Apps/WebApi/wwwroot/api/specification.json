@@ -354,6 +354,102 @@
           }
         }
       }
+    },
+    "/api/VoyagePlan/searchfrom/{param}": {
+      "get": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_GetVoyagePlanByCityFrom",
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VoyagePlan/searchto/{param}": {
+      "get": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_GetVoyagePlanByCityTo",
+        "parameters": [
+          {
+            "name": "param",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VoyagePlan/enroll": {
+      "post": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_Enroll",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollVoyagePlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfEnrolleeDto"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -713,6 +809,63 @@
           },
           "publish": {
             "type": "boolean"
+          }
+        }
+      },
+      "ServiceResultOfEnrolleeDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ServiceResult"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/EnrolleeDto"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "EnrolleeDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "voyagePlanId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "voyagePlan": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VoyagePlanDto"
+              }
+            ]
+          }
+        }
+      },
+      "EnrollVoyagePlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voyagePlanId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       }

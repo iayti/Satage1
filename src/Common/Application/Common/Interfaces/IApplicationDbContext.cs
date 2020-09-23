@@ -13,6 +13,8 @@
 
         DbSet<VoyagePlan> VoyagePlans { get; set; }
 
+        DbSet<Enrollee> Enrollees { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
