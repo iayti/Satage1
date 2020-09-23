@@ -11,6 +11,8 @@
     {
         DbSet<City> Cities { get; set; }
 
+        DbSet<VoyagePlan> VoyagePlans { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

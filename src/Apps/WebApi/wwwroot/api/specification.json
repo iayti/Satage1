@@ -3,6 +3,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Satage1 API",
+    "description": "sample user email: test@test.com password: Matech_1850",
     "version": "1.0.0"
   },
   "paths": {
@@ -23,12 +24,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -58,12 +54,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -93,12 +84,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/Cities/{id}": {
@@ -130,12 +116,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -165,12 +146,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/Login": {
@@ -198,6 +174,180 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceResultOfLoginResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VoyagePlan": {
+      "get": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_GetAllVoyagePlan",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfListOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVoyagePlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_Update",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVoyagePlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VoyagePlan/{id}": {
+      "get": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_GetVoyagePlanById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VoyagePlan/publish": {
+      "post": {
+        "tags": [
+          "VoyagePlan"
+        ],
+        "operationId": "VoyagePlan_Publish",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishVoyagePlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResultOfVoyagePlanDto"
                 }
               }
             }
@@ -390,6 +540,179 @@
           "password": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "ServiceResultOfListOfVoyagePlanDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ServiceResult"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/VoyagePlanDto"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "VoyagePlanDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cityFromId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cityToId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfSeats": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentCapacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publish": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "cityFrom": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CityDto"
+              }
+            ]
+          },
+          "cityTo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CityDto"
+              }
+            ]
+          }
+        }
+      },
+      "ServiceResultOfVoyagePlanDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ServiceResult"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/VoyagePlanDto"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CreateVoyagePlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cityFromId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cityToId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfSeats": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateVoyagePlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cityFromId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cityToId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfSeats": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PublishVoyagePlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publish": {
+            "type": "boolean"
           }
         }
       }

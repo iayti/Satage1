@@ -15,7 +15,7 @@
     using Application.Cities.Commands.Delete;
     using Application.Cities.Commands.Update;
 
-    [Authorize]
+    //[Authorize]
     public class CitiesController : BaseApiController
     {
         [HttpGet]

@@ -15,13 +15,12 @@
 
             if (userManager.Users.All(u => u.UserName != defaultUser.UserName))
             {
-                await userManager.CreateAsync(defaultUser, "Kurabiyem_1850");
+                await userManager.CreateAsync(defaultUser, "Matech_1850");
             }
         }
 
         public static async Task SeedSampleCityDataAsync(ApplicationDbContext context)
         {
-            // Seed, if necessary
             if (!context.Cities.Any())
             {
                 List<City> list = new List<City>();

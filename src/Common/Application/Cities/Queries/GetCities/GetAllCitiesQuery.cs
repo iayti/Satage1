@@ -31,9 +31,6 @@
 
         public async Task<ServiceResult<List<CityDto>>> Handle(GetAllCitiesQuery request, CancellationToken cancellationToken)
         {
-            //Will be removed.
-            await Task.Delay(5000, cancellationToken);
-
             List<CityDto> list = await _context.Cities
                 .ProjectToType<CityDto>(_mapper.Config)
                 .ToListAsync(cancellationToken);

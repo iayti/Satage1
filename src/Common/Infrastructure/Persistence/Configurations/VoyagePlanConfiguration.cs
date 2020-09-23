@@ -8,10 +8,6 @@
     {
         public void Configure(EntityTypeBuilder<VoyagePlan> builder)
         {
-            builder.Property(t => t.CityFromId).IsRequired();
-
-            builder.Property(t => t.CityToId).IsRequired();
-
             builder.Property(t => t.Date).IsRequired();
 
             builder.Property(t => t.Description)

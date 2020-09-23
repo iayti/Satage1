@@ -51,6 +51,7 @@ namespace WebApi
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "Satage1 API";
+                configure.Description = "sample user email: test@test.com password: Matech_1850";
                 configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {
                     Type = OpenApiSecuritySchemeType.ApiKey,
