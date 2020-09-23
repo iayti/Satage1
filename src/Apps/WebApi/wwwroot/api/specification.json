@@ -812,14 +812,6 @@
           "voyagePlanId": {
             "type": "integer",
             "format": "int32"
-          },
-          "voyagePlan": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/VoyagePlanDto"
-              }
-            ]
           }
         }
       },

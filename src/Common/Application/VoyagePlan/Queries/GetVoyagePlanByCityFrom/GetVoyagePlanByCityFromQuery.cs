@@ -32,6 +32,9 @@
         public async Task<ServiceResult<VoyagePlanDto>> Handle(GetVoyagePlanByCityFromQuery request, CancellationToken cancellationToken)
         {
             VoyagePlanDto plan = await _context.VoyagePlans
+                .Include(c => c.CityFrom)
+                .Include(c => c.CityTo)
+                .Include(s => s.Stops)
                 .Where(x => x.CityFrom.Name.Contains(request.param))
                 .ProjectToType<VoyagePlanDto>(_mapper.Config)
                 .FirstOrDefaultAsync(cancellationToken);
