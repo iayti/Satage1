@@ -1,6 +1,6 @@
 ﻿Proje .Net Core 3.1.8 versiyonu ile geliştirilmiştir. Local PC dotnet --version: 3.1.402
 
-Projeyi geliştirirken MediatR, FluentValidation, Mapster Mapping ve NSwag kütüplhanelerinden yararlandım. Kendi geliştirmiş olduğum CleanArchitecture mimarisini tema olarak kullandığım için Proje gereksinimlerinde olmasada Request validation  gibi kontrolleri sağlıyorum.
+Projeyi geliştirirken MediatR, FluentValidation, Mapster Mapping ve NSwag kütüphanelerinden yararlandım. Kendi geliştirmiş olduğum CleanArchitecture mimarisini tema olarak kullandığım için Proje gereksinimlerinde olmasada Request validation  gibi kontrolleri sağlıyorum.
 
 Proje UseInMemory formatında çalışabiliyor fakat sql üzerinde çalıştırmak isterseniz. WebApi içerisinde appsetting.json'daki bağlantı ayarlarını değiştirmeniz gerekiyor. UseInMemoryDatabase= false olacak.
 
